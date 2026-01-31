@@ -1,5 +1,3 @@
-![浅忆QanYi's GitHub stats](https://github-readme-stats.vercel.app/api?username=CN-QanYi&show_icons=true&theme=transparent)
-
 <table width="100%">
   <tr>
     <td width="50%" valign="top">
