@@ -79,6 +79,7 @@ jobs:
           plugin_stars_limit: 3
 
       # 7. 3D 提交日历
+      # 只能显示最近 365 天 (full-year)，无法精确裁剪到 6月，但 365天 肯定包含 6月。
       - name: Isometric Calendar
         uses: lowlighter/metrics@latest
         with:
@@ -86,9 +87,12 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           plugin_isocalendar: yes
-          plugin_isocalendar_duration: full-year
+          # 选项只有 full-year (365天) 或 half-year (180天)
+          # 选 full-year 可以覆盖到 2025年6月
+          plugin_isocalendar_duration: half-year
 
       # 8. 全年普通日历
+      # 显示最近的 2 个年份 (2026 和 2025)
       - name: Calendar
         uses: lowlighter/metrics@latest
         with:
@@ -96,4 +100,6 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
           base: ""
           plugin_calendar: yes
-          plugin_calendar_limit: 0
+          # 限制为 2 年 (当前年 + 去年)
+          # 这样会显示 2025 和 2026 整年
+          plugin_calendar_limit: 2
